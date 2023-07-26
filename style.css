@@ -1,0 +1,123 @@
+/* Style pour le conteneur principal */
+.wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Style pour la zone d'en-tête */
+.header {
+    background-image: url("Mask group.jpg");
+    background-size: cover;
+    height: 960px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+    align-items: center;
+    font-family: 'Anton', sans-serif;
+}
+
+/* Style pour le logo */
+.logo {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+}
+
+
+/* Style pour le texte dans l'en-tête */
+.header p {
+    font-family: "Anton";
+    font-weight: 400;
+    font-size: 44px;
+    line-height: 66.24px;
+    color: #FFD15B;
+    font-weight: bold;
+}
+
+/* Style pour le formulaire de recherche dans l'en-tête */
+.form {
+    position: relative;
+}
+
+.form input {
+    padding: 1.5rem;
+    width: 954px;
+    border-radius: 11px;
+    border: none;
+    position: relative;
+}
+
+.form img {
+    position: absolute;
+    right: 0.5rem;
+    top: 9%;
+}
+
+/* Placer les cartes de recette en dessous du header avec flexbox */
+main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.recipes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+}
+
+/* Style pour les cartes de recette */
+.recipe-card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 380px; /* Largeur fixe de 380px */
+    height: 731px; /* Hauteur fixe de 731px */
+    margin-bottom: 20px; /* Espace entre les cartes */
+}
+
+/* Style pour l'image de recette */
+.recipe-image {
+    width: 100%;
+    height: 253px; /* Hauteur de l'image (ajustable en fonction de l'aspect ratio de l'image) */
+    overflow: hidden;
+    object-fit: cover;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+/* Style pour le nom de la recette */
+.recipe-name {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Style pour la description de la recette */
+.recipe-description {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+/* Style pour le titre "Ingrédients" */
+.recipe-ingredients-heading {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* Style pour la liste des ingrédients */
+.recipe-ingredients {
+    font-size: 14px;
+    list-style: none;
+    padding-left: 0;
+}
+
+.recipe-ingredients li {
+    margin-bottom: 5px;
+}
