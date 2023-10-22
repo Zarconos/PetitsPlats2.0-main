@@ -1,35 +1,51 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Anton">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Manrope">
     <title>Les Petits Plats</title>
-</head>
-<body>
-        <header class="header">
-            <img src=".\assets\icones\logo.svg" alt="" class="logo"/>
-            <p>CHERCHEZ PARMI PLUS DE 1500 RECETTES <br/>
-                DU QUOTIDIEN, SIMPLES ET DÉLICIEUSES</p>
-            <form action="" class="form">
-                <input type="text" placeholder="Rechercher une recette, un ingrédient, ...">
-                <img src="assets\icones\loop.svg" alt="">
-            </form>
-        </header>
-        <main id="main">
-            <section class="options-section">
-                <div>
-                    <img src="./assets/utils/vectordown.svg" alt="">
-                </div>
-            </section>
-            <section class="options-section">
-                <ul class="recipes">
-                    
-                </ul>
-            </section>
-        </main>
+  </head>
+  <body>
+    <header class="header">
+      <img src="./assets/icones/logo.svg" alt="" class="logo" />
+      <p>CHERCHEZ PARMI PLUS DE 1500 RECETTES <br /> DU QUOTIDIEN, SIMPLES ET DÉLICIEUSES </p>
+      <form action="#" class="form">
+        <input type="text" placeholder="Rechercher une recette, un ingrédient, ..." id="searchInput">
+        <input type="text" placeholder="Hidden Search Bar" id="hiddenSearchInput" style="display: none;">
+        <img src="assets/icones/Variant2.svg" alt="" id="searchIcons">
+        <img src="assets/icones/loop.svg" alt="" id="searchIcon">
+      </form>
+    </header>
+    <div class="tag-container">
+      <button id="ingredient-button" class="filter-button filter-type-button" data-filter="ingredient" data-filter-type="ingredient">Ingrédients <img src="./assets/icones/Vector1.svg" class="verctor" alt="">
+      </button>
+      <button id="ustensil-button" class="filter-button filter-type-button" data-filter="ustensil" data-filter-type="ustensil">Ustensiles <img src="./assets/icones/Vector1.svg" class="verctor" alt="">
+      </button>
+      <button id="appliance-button" class="filter-button filter-type-button" data-filter="appliance" data-filter-type="appliance">Appareils <img src="./assets/icones/Vector1.svg" class="verctor" alt="">
+      </button>
+      <p>
+        <span id="recipeCount"> recettes</span>
+      </p>
+      <div class="filter-container">
+        <div class="filter-list"></div>
+      </div>
+      <div class="filter-list" style="display: none;"></div>
+    </div>
+    <div class="tags">
+      <div class="selected-ingredients"></div>
+      <div class="selected-ustensils"></div>
+      <div class="selected-appliances"></div>
+    </div>
+    <main id="main">
+      <section class="options-section"></section>
+      <section class="options-section">
+        <ul class="recipes"></ul>
+      </section>
+    </main>
     <script src="./recipes.js"></script>
-    <script src="./index.js"></script>
-</body>
-
+    <script type="module" src="/index.js"></script>
+  </body>

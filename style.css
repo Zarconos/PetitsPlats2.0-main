@@ -5,9 +5,14 @@
     padding: 20px;
 }
 
+body {
+    background-color: #E5E5E5;
+    margin: 0px;
+}
+
 /* Style pour la zone d'en-tête */
 .header {
-    background-image: url("Mask group.jpg");
+    background-image: url("./assets/header/Mask group.jpg");
     background-size: cover;
     height: 960px;
     width: 100%;
@@ -16,7 +21,7 @@
     justify-content: center;
     gap: 2rem;
     align-items: center;
-    font-family: 'Anton', sans-serif;
+    font-family: 'Manrope', sans-serif;
 }
 
 /* Style pour le logo */
@@ -54,13 +59,18 @@
     position: absolute;
     right: 0.5rem;
     top: 9%;
+    cursor: pointer;
 }
+
+.form img:hover {
+    opacity: 0;
+  }
 
 /* Placer les cartes de recette en dessous du header avec flexbox */
 main {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .recipes {
@@ -68,17 +78,19 @@ main {
     flex-wrap: wrap;
     gap: 2rem;
     justify-content: center;
+    list-style-type: none;
 }
 
 /* Style pour les cartes de recette */
 .recipe-card {
     border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 21px;
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     width: 380px; 
     height: 731px; /* Hauteur fixe de 731px */
     margin-bottom: 20px; /* Espace entre les cartes */
+    position: relative;
 }
 
 /* Style pour l'image de recette */
@@ -87,28 +99,92 @@ main {
     height: 253px; /* Hauteur de l'image (ajustable en fonction de l'aspect ratio de l'image) */
     overflow: hidden;
     object-fit: cover;
-    border-top-right-radius: 5px;
-    border-top-left-radius: 5px;
+    border-top-right-radius: 21px;
+    border-top-left-radius: 21px;
 }
 
 /* Style pour le nom de la recette */
 .recipe-name {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
     margin-bottom: 10px;
+    font-family: 'Anton', sans-serif;
+    margin-left: 25px;
+    margin-top: 30px;
 }
 
 /* Style pour la description de la recette */
 .recipe-description {
     font-size: 14px;
-    margin-bottom: 10px;
+    margin-bottom: -15px;
+    font-family: 'Manrope', sans-serif;
+    color: #1B1B1B;
+    margin-left: 25px;
+    overflow: auto;
+    height: 76px;
+    width: 330px;
+}
+
+/* Personnalisation pour les navigateurs WebKit (Chrome, Safari, etc.) */
+.recipe-description::-webkit-scrollbar {
+    width: 2px; /* Largeur de la barre de défilement */
+}
+
+.recipe-description::-webkit-scrollbar-thumb {
+    background-color: white; /* Couleur de la poignée de la barre de défilement */
+}
+
+/* Personnalisation pour Firefox */
+.recipe-description {
+    scrollbar-width: thin; /* Largeur de la barre de défilement pour Firefox */
+}
+
+.recipe-description::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Couleur de l'arrière-plan de la barre de défilement */
+}
+
+.recipe-description::-webkit-scrollbar-thumb {
+    background-color: #f1f1f1; /* Couleur de la poignée de la barre de défilement */
+}
+
+.recipe-description::-webkit-scrollbar-thumb:hover {
+    background-color: #f1f1f1; /* Couleur de la poignée de la barre de défilement au survol */
+}
+
+/* Style pour le titre "Ingrédients" */
+.recipe-ustensils-heading {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* Style pour la liste des ingrédients */
+.recipe-ustensils {
+    font-size: 14px;
+    list-style: none;
+    padding-left: 0;
+}
+
+.recipe-ustensils li {
+    margin-bottom: 5px;
 }
 
 /* Style pour le titre "Ingrédients" */
 .recipe-ingredients-heading {
-    font-size: 16px;
     font-weight: bold;
-    margin-bottom: 5px;
+    margin-top: 45px; /* Espacement du titre par rapport au reste du contenu */
+    font-family: "Manrope";
+    color: #7A7A7A;
+    font-weight: bold;
+    margin-bottom: 15px;
+    margin-left: 25px;
+    color: var(--Grey, #7A7A7A);
+font-size: 12px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+letter-spacing: 1.08px;
+text-transform: uppercase;
 }
 
 /* Style pour la liste des ingrédients */
@@ -116,8 +192,788 @@ main {
     font-size: 14px;
     list-style: none;
     padding-left: 0;
+    margin-left: 25px;
 }
 
 .recipe-ingredients li {
     margin-bottom: 5px;
+    margin-left: 25px;
 }
+
+/* Style pour le titre "Ingrédients" */
+.recipe-appliances-heading {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* Style pour la liste des ingrédients */
+.recipe-appliances{
+    font-size: 14px;
+    list-style: none;
+    padding-left: 0;
+}
+
+.recipe-appliances li {
+    margin-bottom: 5px;
+}
+
+
+/* Style pour les tags d'ingrédients sélectionnés */
+
+
+.selected-tag {
+    display: inline-block;
+    background-color: #FFD15B;
+    color: black;
+    padding: 5px 10px;
+    border-radius: 4px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.selected-tag span {
+    margin-left: 5px;
+}
+
+/* Style pour le menu déroulant */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.show {
+    display: block;
+}
+
+.ustensil-tag {
+    padding: 5px;
+    cursor: pointer;
+}
+
+.ingredient-tag {
+    padding: 5px;
+    cursor: pointer;
+}
+
+/* Style pour les boutons */
+
+
+.filters{
+    display: flex;
+    margin-left: 111px;
+    margin-top: 44px;
+}
+
+/* Styles CSS pour le menu déroulant */
+.ustensil-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.ustensil-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.ustensil-content input {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    outline: none;
+}
+
+.ustensil-content ul {
+    list-style-type: none;
+    padding: 0;
+    max-height: 200px;
+    overflow-y: auto;
+    margin: 0;
+}
+
+.ustensil-content ul li {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.close-btn {
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: none;
+    cursor: pointer;
+}
+
+/* Styles CSS pour afficher le menu déroulant */
+.open {
+    display: block;
+}
+
+
+/* Styles CSS pour le menu déroulant */
+.ingredient-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.ingredient-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.ingredient-content input {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    outline: none;
+}
+
+.ingredient-content ul {
+    list-style-type: none;
+    padding: 0;
+    max-height: 200px;
+    overflow-y: auto;
+    margin: 0;
+}
+
+.ingredient-content ul li {
+    padding: 8px;
+    cursor: pointer;
+}
+
+/* Styles CSS pour le menu déroulant */
+.appliance-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.appliance-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.appliance-content input {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    outline: none;
+}
+
+.appliance-content ul {
+    list-style-type: none;
+    padding: 0;
+    max-height: 200px;
+    overflow-y: auto;
+    margin: 0;
+}
+
+.appliance-content ul li {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.ingredient-tag {
+    display: none;
+}
+
+.recipe-ingredients-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Deux colonnes égales */
+    grid-gap: 5px; /* Espacement entre les éléments */
+}
+
+
+
+/* CSS pour chaque ingrédient */
+.ingredient {
+    display: flex;
+    flex-direction: column; /* Mettre l'ingrédient au-dessus de la quantité + unité */
+}
+
+/* CSS pour le nom de l'ingrédient */
+.ingredient-name {
+    font-family: Manrope;
+font-size: 14px;
+font-weight: 500;
+line-height: 19px;
+letter-spacing: 0em;
+text-align: left;
+margin-left: 25px;
+}
+
+/* CSS pour la quantité + unité */
+.ingredient-quantity {
+    font-family: Manrope;
+font-size: 14px;
+font-weight: 400;
+line-height: 19px;
+letter-spacing: 0em;
+text-align: left;
+margin-left: 25px;
+color: #7A7A7A;
+}
+
+.recipe-appliance{
+    visibility: hidden;
+}
+
+.recipe-ustensils{
+    visibility: hidden;
+}
+
+
+#ingredientFilterDropdown{
+position: relative;
+    z-index: 999; }
+
+    
+
+#ustensilFilterDropdown{
+position: relative;
+    z-index: 999; }
+
+    #applianceFilterDropdown{
+        position: relative;
+            z-index: 999; }
+
+
+#ingredientFilterBtn{
+    margin: 50px;
+}
+
+#ustensilFilterBtn{
+    margin: 50px;
+}
+
+#applianceFilterBtn{
+    margin: 50px;
+}
+
+.verctor{
+    margin-left: 60px;
+}
+
+
+
+
+/* Style pour le titre "Ingrédients" */
+.recipe-ustensils-heading {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* Style pour la liste des ingrédients */
+.recipe-ustensils {
+    font-size: 14px;
+    list-style: none;
+    padding-left: 0;
+}
+
+.recipe-ustensils li {
+    margin-bottom: 5px;
+}
+
+
+/* Style pour la liste des ingrédients */
+.recipe-ingredients {
+    font-size: 14px;
+    list-style: none;
+    padding-left: 0;
+    margin-left: 25px;
+}
+
+.recipe-ingredients li {
+    margin-bottom: 5px;
+    margin-left: 25px;
+}
+
+/* Style pour le titre "Ingrédients" */
+.recipe-appliances-heading {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* Style pour la liste des ingrédients */
+.recipe-appliances{
+    font-size: 14px;
+    list-style: none;
+    padding-left: 0;
+}
+
+.recipe-appliances li {
+    margin-bottom: 5px;
+}
+
+
+/* Style pour les tags d'ingrédients sélectionnés */
+
+
+.selected-tag {
+    display: inline-block;
+    background-color: #FFD15B;
+    color: black;
+    padding: 5px 10px;
+    border-radius: 4px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.selected-tag span {
+    margin-left: 5px;
+}
+
+/* Style pour le menu déroulant */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.show {
+    display: block;
+}
+
+.ustensil-tag {
+    padding: 5px;
+    cursor: pointer;
+}
+
+.ingredient-tag {
+    padding: 5px;
+    cursor: pointer;
+}
+
+
+.filters{
+    display: flex;
+    margin-left: 111px;
+    margin-top: 44px;
+}
+
+/* Styles CSS pour le menu déroulant */
+.ustensil-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.ustensil-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.ustensil-content input {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    outline: none;
+}
+
+.ustensil-content ul {
+    list-style-type: none;
+    padding: 0;
+    max-height: 200px;
+    overflow-y: auto;
+    margin: 0;
+}
+
+.ustensil-content ul li {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.close-btn {
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: none;
+    cursor: pointer;
+}
+
+/* Styles CSS pour afficher le menu déroulant */
+.open {
+    display: block;
+}
+
+
+/* Styles CSS pour le menu déroulant */
+.ingredient-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.ingredient-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.ingredient-content input {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    outline: none;
+}
+
+.ingredient-content ul {
+    list-style-type: none;
+    padding: 0;
+    max-height: 200px;
+    overflow-y: auto;
+    margin: 0;
+}
+
+.ingredient-content ul li {
+    padding: 8px;
+    cursor: pointer;
+}
+
+/* Styles CSS pour le menu déroulant */
+.appliance-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.appliance-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.appliance-content input {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    outline: none;
+}
+
+.appliance-content ul {
+    list-style-type: none;
+    padding: 0;
+    max-height: 200px;
+    overflow-y: auto;
+    margin: 0;
+}
+
+.appliance-content ul li {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.ingredient-tag {
+    display: none;
+}
+
+.recipe-ingredients-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Deux colonnes égales */
+    grid-gap: 15px; /* Espacement entre les éléments */
+}
+
+
+/* CSS pour chaque ingrédient */
+.ingredient {
+    display: flex;
+    flex-direction: column; /* Mettre l'ingrédient au-dessus de la quantité + unité */
+}
+
+/* CSS pour le nom de l'ingrédient */
+.ingredient-name {
+    font-family: Manrope;
+font-size: 14px;
+font-weight: 500;
+line-height: 19px;
+letter-spacing: 0em;
+text-align: left;
+margin-left: 25px;
+}
+
+/* CSS pour la quantité + unité */
+.ingredient-quantity {
+    font-family: Manrope;
+font-size: 14px;
+font-weight: 400;
+line-height: 19px;
+letter-spacing: 0em;
+text-align: left;
+margin-left: 25px;
+color: #7A7A7A;
+}
+
+.recipe-appliance{
+    visibility: hidden;
+}
+
+.recipe-ustensils{
+    visibility: hidden;
+}
+
+.recipe-time{
+    position: absolute;
+    top: 5px;
+    right: 20px;
+    background-color: #FFD15B;
+    padding: 5px 15px 5px 15px;
+    border-radius: 14px;
+    color: var(--Black, #1B1B1B);
+    text-align: center;
+    font-family: Manrope;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+#ingredientFilterDropdown{
+position: relative;
+    z-index: 999; }
+
+    
+
+#ustensilFilterDropdown{
+position: relative;
+    z-index: 999; }
+
+    #applianceFilterDropdown{
+        position: relative;
+            z-index: 999; }
+
+#recipeCount{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 159px;
+    margin-top: -60px;
+    color: var(--Black, #1B1B1B);
+    font-family: Anton;
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+#ingredientFilterBtn{
+    margin: 50px;
+}
+
+#ustensilFilterBtn{
+    margin: 50px;
+}
+
+#applianceFilterBtn{
+    margin: 50px;
+}
+
+.verctor{
+    margin-left: 60px;
+}
+
+/* Style de base pour les tags */
+.tag {
+    display: inline-flex;
+    padding: 17px 18px;
+    align-items: center;
+    gap: 60px;
+    border-radius: 10px;
+    background: #FFD15B;
+    margin-left: 80px;
+    color: #000;
+font-family: Manrope;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+
+
+.error-message {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+    background-color: #FFD15B;
+    padding: 20px;
+    border-radius: 10px;
+    font-family: 'Manrope';
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.filter-list {
+display: block ;
+    position: relative !important;
+    left: 0px;
+    right: -20px !important;
+    top: -45px !important;
+    width: 195px !important;
+    z-index: 1;
+    border: none !important;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    max-height: 200px;
+    overflow-y: auto;
+    /* width: 295px !important; */
+    font-size: 14px;
+    margin-bottom: 10px;
+    font-family: 'Manrope', sans-serif;
+    margin-left: -83px;
+}
+
+/* Style pour la liste déroulante ouverte */
+.filter-list.active {
+    display: block;
+}
+
+/* Personnalisation de la barre de défilement pour .filter-list */
+.filter-list::-webkit-scrollbar {
+    width: 8px; /* Largeur de la barre de défilement */
+}
+
+.filter-list::-webkit-scrollbar-thumb {
+    background-color: #f1f1f1; /* Couleur de la poignée de la barre de défilement */
+}
+
+/* Personnalisation de la barre de défilement pour Firefox */
+.filter-list {
+    scrollbar-width: thin; /* Largeur de la barre de défilement pour Firefox */
+}
+
+.filter-list::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Couleur de l'arrière-plan de la barre de défilement */
+}
+
+.filter-list::-webkit-scrollbar-thumb {
+    background-color: #f1f1f1; /* Couleur de la poignée de la barre de défilement */
+}
+
+.filter-list::-webkit-scrollbar-thumb:hover {
+    background-color: #f1f1f1; /* Couleur de la poignée de la barre de défilement au survol */
+}
+
+.tag-container{
+    margin-left: 83px;
+    margin-top: 52px;
+    margin-bottom: 75px;
+}
+
+.filter-button{
+    border: none;
+    border-radius: 11px;
+    cursor: pointer;
+    width: 195px;
+    font-size: 20px;
+    background-color: white;
+    display: inline-flex;
+    padding: 17px 16px;
+    position: relative;
+    align-items: center;
+    z-index: 2;
+}
+
+
+.hidden{
+    display: none;
+}
+
+.recipe-heading{
+    font-family: "Manrope";
+
+    color: #7A7A7A;
+    font-weight: bold;
+    margin-left: 25px;
+    margin-top: 40px;
+    color: var(--Grey, #7A7A7A);
+font-size: 12px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+letter-spacing: 1.08px;
+text-transform: uppercase;
+}
+
+.filter-item{
+    margin-left: 16px;
+    color: var(--Black, #1B1B1B);
+    font-family: Manrope;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 13px;
+    cursor: pointer;
+}
+
+.filter-item:hover{
+    background-color: #FFD15B;
+    height: 20px;
+}
+
+.filter-search{
+    width: 163px;
+    height: 36px;
+    margin-top: 45px;
+    margin-left: 16px;
+    border-radius: 2px;
+    border: 1px solid var(--Light-Grey, #D9D9D9);
+}
+
+.search-icon {
+    background-image: url('./assets/icones/Group 4.svg');
+    background-size: 14px 14px; /* Ajustez la taille de l'icône selon vos besoins */
+    background-position-x: 140px;
+    background-position-y: 13px;
+    background-repeat: no-repeat;
+}
+
+.delete-button {
+    background-image: url(assets/icones/cross.svg);
+    width: 15px;
+    height: 13px;
+    /* color: transparent; */
+    background-color: #FFD15B;
+    border: none;
+    stroke-width: 2.167px;
+    stroke: var(--Black, #1B1B1B);
+    background-repeat: no-repeat;
+    cursor: pointer;
+  }
