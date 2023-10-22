@@ -44,12 +44,13 @@ function displayRecipes() {
 // Appel de la fonction pour afficher les "cards" des recettes une fois que la page est chargée
 document.addEventListener('DOMContentLoaded', displayRecipes);
 
-// Fonction pour filtrer les recettes en fonction des mots-clés
+// Fonction pour filtrer les recettes en fonction d'une chaîne de recherche
 export function filterRecipes(searchString) {
     const recipeContainer = document.querySelector('.recipes');
     recipeContainer.innerHTML = '';
 
-    const keywords = searchString.trim().toLowerCase().split(/\s+/);
+    // Convertir la chaîne de recherche en minuscules
+    const searchTerm = searchString.trim().toLowerCase();
 
     const filteredRecipes = recipes.filter(recipe => {
         const recipeName = recipe.name.toLowerCase();
@@ -58,22 +59,20 @@ export function filterRecipes(searchString) {
         const ustensils = recipe.ustensils.map(ustensil => ustensil.toLowerCase()).join(' ');
         const appliances = recipe.appliance.toLowerCase();
 
-        return keywords.every(keyword => {
-            return (
-                recipeName.includes(keyword) ||
-                recipeDescription.includes(keyword) ||
-                ingredients.includes(keyword) ||
-                ustensils.includes(keyword) ||
-                appliances.includes(keyword)
-            );
-        });
+        return (
+            recipeName.includes(searchTerm) ||
+            recipeDescription.includes(searchTerm) ||
+            ingredients.includes(searchTerm) ||
+            ustensils.includes(searchTerm) ||
+            appliances.includes(searchTerm)
+        );
     });
 
     // Vérifier si aucune recette ne correspond à la recherche
     if (filteredRecipes.length === 0) {
         // Afficher le message d'erreur avec des suggestions de recherche
         const errorMessage = document.createElement('div');
-        errorMessage.textContent = `Aucune recette ne contient '${searchString}', vous pouver chercher 'tarte aux pommes', 'poisson', etc.`;
+        errorMessage.textContent = `Aucune recette ne correspond à votre recherche : '${searchString}'.`;
         errorMessage.className = 'error-message';
         recipeContainer.appendChild(errorMessage);
     } else {
@@ -86,9 +85,10 @@ export function filterRecipes(searchString) {
         extractKeywordsFromRecipeCards();
     }
 
-    // Metter à jour le compteur
+    // Mettre à jour le compteur
     updateRecipeCount();
 }
+
 
 // Const pour le nombre minimum de caractères dans la barre de recherche
 const MINIMUM_INPUT_NUMBER = 3;
